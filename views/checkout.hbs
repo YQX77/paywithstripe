@@ -1,0 +1,49 @@
+<div class="row justify-content-md-center">
+  <div class="col-6">
+    <div class="text-center mt-40">
+      <h1>
+        Checkout — Stripe Press
+      </h1>
+      <script src="https://js.stripe.com/v3/"></script>
+      <h5 class="text-secondary">
+        {{title}}
+      </h5>
+      <hr class="mt-40">
+      <div class="mt-20 text-info">
+        Total due: $<span class="amount" data-amount="{{amount}}"></span>
+      </div>
+    </div>
+    <div class="card box-shadow mt-40 text-center">
+      <div class="card-body align-middle">
+        <button type="button" class="btn btn-primary btn-lg" id="checkout-button">Checkout</button>
+        <script type="text/javascript">
+          const key = "{{key}}"
+          const stripe = Stripe(key);
+          const checkoutButton = document.getElementById('checkout-button');
+          checkoutButton.addEventListener('click', function () {
+            const amount = "{{amount}}";
+            const title = "{{title}}";
+            const item = "{{item}}"
+            fetch(`/create-checkout-session?amount=${amount}&title=${title}&item=${item}`, {
+              method: 'POST',
+            })
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+              })
+              .then(function (result) {
+                if (result.error) {
+                  alert(result.error.message);
+                }
+              })
+              .catch(function (error) {
+                console.error('Error:', error);
+              });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

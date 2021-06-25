@@ -1,0 +1,19 @@
+{
+  "name": "sa-takehome-project-node",
+  "version": "1.0.0",
+  "description": "SA Takehome Project",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Matt Mitchell",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.13.3",
+    "express-handlebars": "^5.2.1",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "stripe": "^8.137.0"
+  }
+}
