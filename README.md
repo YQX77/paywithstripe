@@ -16,7 +16,7 @@ This project consist of below elements:
 To get started, clone the repository and run `npm install` to install dependencies:
 
 ```
-git clone  && cd paywithstripe
+git clone https://github.com/YQX77/paywithstripe.git && cd paywithstripe
 npm install
 ```
 
